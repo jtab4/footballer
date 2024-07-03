@@ -10,6 +10,7 @@
 /coverage
 /backend/node_modules
 /backend/.env
+/backend/.gitignore
 # next.js
 /.next/
 /out/
