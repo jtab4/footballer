@@ -1,20 +1,26 @@
 'use server'
 
 import { validateData } from '@/lib/utils';
-
+import {login} from '@/lib/auth/loginLogic'
+import { cookies } from 'next/headers'
 export async function authenticate(prevState : any, formData : FormData) {
-    const email = formData.get("email") as string | null;
-    const password = formData.get("password") as string | null;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
     try {
         if (!validateData([email, password])) {
             return { message: 'Please enter valid credentials' };
         }
-        console.log(formData.get("email"), formData.get("password"))
+        const response = login(email,password)
+        if((await response).authorized){
+            cookies().set('token', (await response).token as string)
+        }
 
-    } catch (error) {
-        if (error) {}
-        throw error
+        return response
     }
+    catch (error) {
+        return { authorized: false, message: 'An error occurred during authentication' };
+    }
+
 }
 
 export async function signUp(prevState : any, formData : FormData) {
