@@ -6,7 +6,7 @@ interface LoginResponse {
   message?: string;
 }
 
-export async function login(email: string, password: string): Promise<LoginResponse> {
+export async function login(email: string | null, password: string | null): Promise<LoginResponse> {
   try {
     const response = await axios.post('http://localhost:3008/auth/login', {
       email,
