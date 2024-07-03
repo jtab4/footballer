@@ -1,9 +1,13 @@
 'use server'
 
+import { validateData } from '@/lib/utils';
+
 export async function authenticate(prevState : any, formData : FormData) {
+    const email = formData.get("email") as string | null;
+    const password = formData.get("password") as string | null;
     try {
-        if (!formData.get("email") && !formData.get("password")) {
-            return {message: 'Please enter a valid cretendials'}
+        if (!validateData([email, password])) {
+            return { message: 'Please enter valid credentials' };
         }
         console.log(formData.get("email"), formData.get("password"))
 
@@ -14,11 +18,15 @@ export async function authenticate(prevState : any, formData : FormData) {
 }
 
 export async function signUp(prevState : any, formData : FormData) {
+    const email = formData.get("email") as string | null;
+    const password = formData.get("password") as string | null;
+    const repeatedPassword = formData.get("repeated") as string | null;
     try {
-        if (!formData.get("email") && !formData.get("password")) {
-            return {message: 'Please enter a valid cretendials'}
+
+        if (!validateData([email, password, repeatedPassword])) {
+            return { message: 'Please enter valid credentials' };
         }
-        if (formData.get("password") != formData.get("repeated")) {
+        if (password != repeatedPassword) {
             return {message: "Passwords don't matches"}
         }
 

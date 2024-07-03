@@ -17,6 +17,7 @@ export default function RegisterForm() {
                     type="email"
                     id="email"
                     name="email"
+                    required
                     className="px-4 py-3 text-black rounded-md border border-gray-300 focus:outline-none focus:border-green-600 transition duration-300"/>
             </div>
             <div className="flex flex-col">
@@ -25,6 +26,7 @@ export default function RegisterForm() {
                     type="password"
                     id="password"
                     name="password"
+                    required
                     className="px-4 py-3 text-black rounded-md border border-gray-300 focus:outline-none focus:border-green-600 transition duration-300"/>
             </div>
             <div className="flex flex-col">
@@ -33,6 +35,7 @@ export default function RegisterForm() {
                     type="password"
                     id="password"
                     name="repeated"
+                    required
                     className="px-4 py-3 text-black rounded-md border border-gray-300 focus:outline-none focus:border-green-600 transition duration-300"/>
             </div>
             {state?.message && (
