@@ -1,7 +1,8 @@
-import { Controller, Post, Body, UnauthorizedException, ConflictException } from '@nestjs/common';
+import { Controller, Post, Body, UnauthorizedException, ConflictException, UseGuards, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -31,5 +32,10 @@ export class AuthController {
       password: hashedPassword, 
     });
     return this.authService.login(newUser);
+  }
+  @UseGuards(JwtAuthGuard)
+  @Get('verify-token')
+  verifyToken() {
+    return { message: 'Token is valid' };
   }
 }

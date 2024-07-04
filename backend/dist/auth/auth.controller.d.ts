@@ -16,4 +16,7 @@ export declare class AuthController {
     }): Promise<{
         access_token: string;
     }>;
+    verifyToken(): {
+        message: string;
+    };
 }

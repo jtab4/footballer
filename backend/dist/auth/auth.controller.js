@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const user_service_1 = require("../user/user.service");
 const bcrypt = require("bcrypt");
+const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {
     constructor(authService, userService) {
         this.authService = authService;
@@ -41,6 +42,9 @@ let AuthController = class AuthController {
         });
         return this.authService.login(newUser);
     }
+    verifyToken() {
+        return { message: 'Token is valid' };
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -57,6 +61,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Get)('verify-token'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "verifyToken", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService,
