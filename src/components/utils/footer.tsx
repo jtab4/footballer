@@ -1,7 +1,8 @@
 
 import React from 'react';
+import LogoutButton from '../auth/logoutbutton';
 
-const Footer: React.FC = () => {
+export default function Footer () {
     return (
         <footer className="fixed bottom-0 left-0 right-0 bg-white rounded-lg shadow dark:bg-[#546007] p-4">
             <div className="max-w-screen-xl mx-auto">
@@ -12,7 +13,7 @@ const Footer: React.FC = () => {
                     
 
                     
-                    <button className="text-sm text-gray-500 dark:text-black cursor-pointer hover:underline">Log out</button>
+                    <LogoutButton/>
                 </div>
 
                 <hr className="my-4 border-gray-200 dark:border-black" />
@@ -24,4 +25,4 @@ const Footer: React.FC = () => {
     );
 };
 
-export default Footer;
+

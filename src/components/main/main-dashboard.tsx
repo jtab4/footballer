@@ -3,14 +3,15 @@ import React from 'react';
 import Image from 'next/image';
 import soccer from '../../assets/images/soccer.jpg';
 import Link from 'next/link';
+import { FiPlus, FiSettings } from 'react-icons/fi'; // Icons from react-icons library
 import Footer from '../utils/footer'; // Adjust the path based on your folder structure
 
-const Dashboard: React.FC = () => {
+export default function Dashboard () {
     const tiles = [
-        { text: 'Create new player', link: '/create-player' },
-        { text: 'Manage your players', link: '/manage-players' },
-        { text: 'Create new team', link: '/create-team' },
-        { text: 'Manage your teams', link: '/manage-teams' },
+        { text: 'Create new player', link: '/create-player', icon: <FiPlus size={24} /> },
+        { text: 'Manage your players', link: '/manage-players', icon: <FiSettings size={24} /> },
+        { text: 'Create new team', link: '/create-team', icon: <FiPlus size={24} /> },
+        { text: 'Manage your teams', link: '/manage-teams', icon: <FiSettings size={24} /> },
     ];
 
     return (
@@ -33,6 +34,11 @@ const Dashboard: React.FC = () => {
                         className="w-80 h-40 m-4 flex items-center justify-center bg-[#4e5405] text-white text-lg font-bold relative bg-cover bg-center rounded-lg shadow-lg transition-transform transform hover:scale-105"
                     >
                         <div className="absolute inset-0 bg-black opacity-50 hover:opacity-30 transition-opacity rounded-lg"></div>
+                        {tile.icon && (
+                            <div className="absolute top-3 right-3 text-white text-2xl">
+                                {tile.icon}
+                            </div>
+                        )}
                         <span className="z-10 text-[#CDCCCA]">{tile.text}</span>
                     </Link>
                 ))}
@@ -42,4 +48,3 @@ const Dashboard: React.FC = () => {
     );
 };
 
-export default Dashboard;
