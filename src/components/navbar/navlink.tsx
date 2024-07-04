@@ -9,7 +9,7 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ href, children }) => {
     return (
         <li>
-            <Link className="text-[#E7F0DC]" href={href}>
+            <Link className="text-[#CDCCCA]" href={href}>
                 {children}
             </Link>
         </li>
