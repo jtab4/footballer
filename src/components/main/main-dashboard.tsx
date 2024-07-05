@@ -8,10 +8,10 @@ import Footer from '../utils/footer'; // Adjust the path based on your folder st
 
 export default function Dashboard () {
     const tiles = [
-        { text: 'Create new player', link: '/create-player', icon: <FiPlus size={24} /> },
-        { text: 'Manage your players', link: '/manage-players', icon: <FiSettings size={24} /> },
-        { text: 'Create new team', link: '/create-team', icon: <FiPlus size={24} /> },
-        { text: 'Manage your teams', link: '/manage-teams', icon: <FiSettings size={24} /> },
+        { text: 'Create new player', link: '/dashboard/create-player', icon: <FiPlus size={24} /> },
+        { text: 'Manage your players', link: '/dashboard/manage-players', icon: <FiSettings size={24} /> },
+        { text: 'Create new team', link: '/dashboard/create-team', icon: <FiPlus size={24} /> },
+        { text: 'Manage your teams', link: '/dashboard/manage-teams', icon: <FiSettings size={24} /> },
     ];
 
     return (

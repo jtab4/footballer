@@ -7,7 +7,7 @@ const Navbar = () => {
             <div
                 className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-                <div className="text-[#CDCCCA] text-2xl font-bold hidden sm:block">Footballer</div>
+                <div className="text-[#CDCCCA] text-2xl font-bold hidden sm:block"><Link href="/">Footballer</Link></div>
 
                 <ul className="flex space-x-4 sm:space-x-8 text-white ml-0 sm:ml-4">
                     <NavItem href="/" className="flex-1">Homepage</NavItem>
