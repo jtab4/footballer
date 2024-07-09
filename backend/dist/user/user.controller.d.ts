@@ -7,30 +7,25 @@ export declare class UserController {
         id: number;
         email: string;
         password: string;
-        createdAt: Date;
     }>;
     findAll(): Promise<{
         id: number;
         email: string;
         password: string;
-        createdAt: Date;
     }[]>;
     findOne(id: string): Promise<{
         id: number;
         email: string;
         password: string;
-        createdAt: Date;
     }>;
     update(id: string, updateUserDto: Prisma.UserUpdateInput): Promise<{
         id: number;
         email: string;
         password: string;
-        createdAt: Date;
     }>;
     remove(id: string): Promise<{
         id: number;
         email: string;
         password: string;
-        createdAt: Date;
     }>;
 }

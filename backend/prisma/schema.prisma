@@ -15,9 +15,42 @@ datasource db {
   // directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
+
+
 model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  players Player[]
+  teams Team[]
+}
+model Player {
+  id          Int    @id @default(autoincrement())
+  first_name  String
+  last_name   String
+  weight      Int
+  height      Int
+  nationality String
+  position    String
+  user_id     Int
+  user        User   @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}
+
+
+model Team {
   id Int @id @default(autoincrement())
-  email String @unique
-  password String
-  createdAt DateTime @default(now())
+  team_name String
+  country String
+  city String
+  budget Int
+  stadium String
+  year DateTime
+  team_color String
+  user_id     Int
+  user        User   @relation(fields: [user_id], references: [id])
+
+  
+
 }
